@@ -9,6 +9,13 @@ export class Base {
   }
 
   /**
+   * Checks if the dom element exists
+   */
+  exists(){
+    return !!this.element;
+  }
+
+  /**
    * A cool API for use addEventListener
    * @param {string} event - a name
    * @param {function} callback - a function
@@ -25,6 +32,12 @@ export class Base {
     if (this.element) {
       this.element.disabled = !enabled;
     }
+  }
+
+  /** Returns the current enabled status of the element. */
+  isEnabled(): boolean {
+    if(this.element) return !this.element.disabled;
+    return false;
   }
 
   /** Returns the element value property */
@@ -51,11 +64,21 @@ export class Base {
     if (this.element) this.element.style = style;
   }
 
+  /** Returns the element dom styles */
+  getStyles(){
+    if (this.element) return this.element.style;
+  }
+
   /**
    * Updates className property of the dom element
    * @param {string} className
    */
   setClassName(className: string) {
     if (this.element) this.element.className = className;
+  }
+
+  /** Returns the current className */
+  getClassName() {
+    if(this.exists()) return this.element.className;
   }
 }
