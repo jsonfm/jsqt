@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSQT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+    <header class="container px-4 py-3">
+        <b class="is-size-3">JSQT</b>
+    </header>
+    <main class="container px-4">
+        <button class="button" id="button">Button</button>
+        <button class="button" id="toggle">Toggle</button>
+    </main>
+
+    <script type="module" src="../dist/jsqt.umd.js"></script>
+    <script type="module">
+        const $ = (id) => document.getElementById(id);
+        const button = new jsqt.Button("button");
+        const toggle = new jsqt.Toggle("toggle", "button is-light", "button is-dark");
+        button.on("click", () => console.log("hello"));
+    </script>
+</body>
+</html>
