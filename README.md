@@ -1,5 +1,5 @@
 ### JSQT
-A library for wrap dom elements with a API similar to Qt/PyQt.
+A library for wrap DOM elements with an API similar to Qt/PyQt.
 
 ### Button
 ```js
@@ -11,3 +11,6 @@ button.on("click", () => console.log("clicked!"));
 ```js
 const led = new Toggle("some-element-id");
 ```
+
+### License
+MIT
