@@ -1,10 +1,14 @@
 import { Base } from "../src/jsqt";
 
 describe("tests for base component", () => {
-    test("Should instance a base component with a null dom element", () => {
-        const base = new Base("button");
-        expect(base.element).toBeNull();
-        expect(base.exists()).toBeFalsy();
+    test("Should raise and error because dom element doesn't exists.", () => {
+        try {
+            const base = new Base("base");
+            expect(base.exists()).toBeFalsy();
+        } catch (error) {
+            expect(error).toBeInstanceOf(Error);
+            expect(error.message).toEqual("Element with id = base not exists! Please check it.")
+        }
     });
 
     test("Should has an existing dom element", () => {
@@ -14,7 +18,7 @@ describe("tests for base component", () => {
 
         const base = new Base("base");
         expect(base.exists()).toBeTruthy();
-        base.setClassName("testClassName")
+        base.setClassName("testClassName");
         expect(base.element.className).toBe("testClassName");
     });
 

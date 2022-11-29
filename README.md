@@ -22,6 +22,8 @@ console.log("led is checked:", led.isChecked());
 ```js
 const label = new jsqt.Label("some-element-id");
 label.setText("some text!");
+
+console.log("text label: ", label.text());
 label.clear(); // clears the label
 ```
 

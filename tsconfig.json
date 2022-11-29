@@ -12,6 +12,7 @@
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
   },
   "include": [
     "src/**/*"

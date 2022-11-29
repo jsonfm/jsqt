@@ -15,6 +15,15 @@ export class Label extends Base {
         this.element.innerHTML = text;
   }
 
+
+  /**
+   * Returns the text of the label
+   */
+  text(){
+    if(this.element)
+        return this.element.innerHTML;
+  }
+
   /**
    * Clears text of the label
    */
