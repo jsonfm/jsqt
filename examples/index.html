@@ -6,22 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSQT</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
     <header class="container px-4 py-3">
         <b class="is-size-3">JSQT</b>
     </header>
     <main class="container px-4">
-        <button class="button" id="button">Button</button>
+        <h4 class="is-size-4 mb-4">Button</h4>
+        <div class="block">
+            <div id="increaseBtn" class="button is-primary">increase</div>
+            <div id="resetBtn" class="button is-danger">reset</div>
+            <b id="count" class="my-auto">Count: 0</b>
+        </div>
+        <h4 class="is-size-4 my-4">Toggle</h4>
         <button class="button" id="toggle">Toggle</button>
+
+        <h4 class="is-size-4 my-4">Dial</h4>
+        <div class="dial" id="dial">
+            <div class="knob"></div>
+        </div>
+        <div id="angleLabel">Angle: 0.0</div>
     </main>
 
-    <script type="module" src="../dist/jsqt.umd.js"></script>
-    <script type="module">
-        const $ = (id) => document.getElementById(id);
-        const button = new jsqt.Button("button");
-        const toggle = new jsqt.Toggle("toggle", "button is-light", "button is-dark");
-        button.on("click", () => console.log("hello"));
-    </script>
+    <script src="./js/prism.js"></script>
+    <script src="../dist/jsqt.umd.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>

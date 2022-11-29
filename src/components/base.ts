@@ -6,6 +6,9 @@ export class Base {
    */
   constructor(elementId: string) {
     this.element = document.getElementById(elementId);
+    if(!this.element){
+      throw new Error(`Element with id = ${elementId} not exists! Please check it.`);
+    }
   }
 
   /**
@@ -21,8 +24,18 @@ export class Base {
    * @param {function} callback - a function
    */
   on(event: string, callback: Function) {
-    this.element?.addEventListener(event, callback);
+    if(this.element)
+      this.element.addEventListener(event, callback);
   }
+
+  /**
+   * Emits an event
+   */
+  emit(event: string | Event) {
+    if(this.element)
+      this.element.dispatchEvent(event);
+  }
+
 
   /**
    * Updates the enabled value

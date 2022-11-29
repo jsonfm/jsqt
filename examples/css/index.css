@@ -1,0 +1,18 @@
+.dial {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #505050;
+    position: relative;
+}
+
+.knob {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    cursor: pointer;
+}
