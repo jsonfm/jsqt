@@ -1,97 +1,123 @@
 export class Base {
-  element: any;
-  /**
-   * A base class for objects
-   * @param {string} elementId
-   */
-  constructor(elementId: string) {
-    this.element = document.getElementById(elementId);
-    if(!this.element){
-      throw new Error(`Element with id = ${elementId} not exists! Please check it.`);
-    }
-  }
+	element: any;
+	/**
+	 * A base class for objects
+	 * @param {string} elementId
+	 */
+	constructor(elementId: string) {
+		this.element = document.getElementById(elementId);
+		if (!this.element) {
+			throw new Error(
+				`Element with id = ${elementId} not exists! Please check it.`
+			);
+		}
+	}
+
+	/**
+	 * Checks if the dom element exists
+	 */
+	exists() {
+		return !!this.element;
+	}
+
+	/**
+	 * A cool API for use addEventListener
+	 * @param {string} event - a name
+	 * @param {function} callback - a function
+	 */
+	on(event: string, callback: Function) {
+		if (this.element) {
+			// Special Events
+			if (event === "pressed") {
+				this.element.addEventListener("mousedown", callback, { passive: true });
+				this.element.addEventListener("touchstart", callback, { passive: true });
+				return;
+			}
+			if (event === "release") {
+				this.element.addEventListener("mouseup", callback, { passive: true });
+				this.element.addEventListener("touchend", callback, { passive: true });
+				return;
+			}
+			if (event === "move") {
+				this.element.addEventListener("mousemove", callback, { passive: true });
+				this.element.addEventListener("touchmove", callback, { passive: true });
+				return;
+			}
+
+			// Normal Events
+			this.element.addEventListener(event, callback);
+		}
+	}
 
   /**
-   * Checks if the dom element exists
+   * A cool API for removeEventListener
    */
-  exists(){
-    return !!this.element;
+  off(event: string, callback: Function){
+    this.element.removeEventListener(event, callback);
   }
 
-  /**
-   * A cool API for use addEventListener
-   * @param {string} event - a name
-   * @param {function} callback - a function
-   */
-  on(event: string, callback: Function) {
-    if(this.element)
-      this.element.addEventListener(event, callback);
-  }
+	/**
+	 * Emits an event
+	 */
+	emit(event: string | Event) {
+		if (this.element) this.element.dispatchEvent(event);
+	}
 
-  /**
-   * Emits an event
-   */
-  emit(event: string | Event) {
-    if(this.element)
-      this.element.dispatchEvent(event);
-  }
+	/**
+	 * Updates the enabled value
+	 * @param {boolean} enabled
+	 */
+	setEnabled(enabled = true) {
+		if (this.element) {
+			this.element.disabled = !enabled;
+		}
+	}
 
+	/** Returns the current enabled status of the element. */
+	isEnabled(): boolean {
+		if (this.element) return !this.element.disabled;
+		return false;
+	}
 
-  /**
-   * Updates the enabled value
-   * @param {boolean} enabled
-   */
-  setEnabled(enabled = true) {
-    if (this.element) {
-      this.element.disabled = !enabled;
-    }
-  }
+	/** Returns the element value property */
+	value() {
+		if (this.element) {
+			return this.element?.value;
+		}
+		return null;
+	}
 
-  /** Returns the current enabled status of the element. */
-  isEnabled(): boolean {
-    if(this.element) return !this.element.disabled;
-    return false;
-  }
+	/**
+	 * Updates element value property.
+	 * @param {string | number | boolean} value
+	 */
+	setValue(value: string | number | boolean) {
+		if (this.element) this.element.value = value;
+	}
 
-  /** Returns the element value property */
-  value() {
-    if (this.element) {
-      return this.element?.value;
-    }
-    return null;
-  }
+	/**
+	 * Updates element styles
+	 * @param {string} style
+	 */
+	setStyles(style: string) {
+		if (this.element) this.element.style = style;
+	}
 
-  /**
-   * Updates element value property.
-   * @param {string | number | boolean} value
-   */
-  setValue(value: string | number | boolean) {
-    if (this.element) this.element.value = value;
-  }
+	/** Returns the element dom styles */
+	getStyles() {
+		if (this.element) return this.element.style;
+	}
 
-  /**
-   * Updates element styles
-   * @param {string} style
-   */
-  setStyles(style: string) {
-    if (this.element) this.element.style = style;
-  }
+	/**
+	 * Updates className property of the dom element
+	 * @param {string} className
+	 */
+	setClassName(className: string) {
+		if (this.element) this.element.className = className;
+	}
 
-  /** Returns the element dom styles */
-  getStyles(){
-    if (this.element) return this.element.style;
-  }
-
-  /**
-   * Updates className property of the dom element
-   * @param {string} className
-   */
-  setClassName(className: string) {
-    if (this.element) this.element.className = className;
-  }
-
-  /** Returns the current className */
-  getClassName() {
-    if(this.exists()) return this.element.className;
-  }
+	/** Returns the current className */
+	getClassName() {
+		if (this.exists()) return this.element.className;
+	}
 }

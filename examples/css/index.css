@@ -1,18 +1,20 @@
 .dial {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: #505050;
     position: relative;
 }
 
-.knob {
-    width: 20px;
-    height: 20px;
+.dial:after {
+    content: "";
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: white;
     position: absolute;
     top: 15px;
     left: 50%;
+    transform: translateX(-50%);
     cursor: pointer;
 }

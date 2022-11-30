@@ -15,8 +15,7 @@
   "scripts": {
     "test": "jest",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "dev": "tsc --watch",
-    "dev:dist": "rimraf dist && rollup -c rollup.config.js -w",
+    "dev": "rimraf dist && rollup -c rollup.config.js -w",
     "format": "prettier --write src",
     "format:check": "prettier --check src/**/*.ts",
     "lint": "eslint ./src",

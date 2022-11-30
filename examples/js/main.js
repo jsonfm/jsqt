@@ -19,10 +19,11 @@ resetBtn.on("click", () => {
 const toggle = new jsqt.Toggle("toggle", "button is-light", "button is-dark");
 
 // Dial
-const dial = new jsqt.Dial("dial");
-
+const dial = new jsqt.Dial("dial", 10, 100, 20);
+console.log("dial value: ", dial.value());
 const dialChange = () => {
-  $('angleLabel').innerHTML = `Angle: ${dial.angle().toFixed(2)}`;
+  $('angleLabel').innerHTML = `Angle: ${dial.angle(true).toFixed(2)}`;
+  $('valueLabel').innerHTML = `Value: ${dial.value().toFixed(2)}`
 }
 
 dial.on("change", dialChange);

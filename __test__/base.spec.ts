@@ -1,7 +1,8 @@
 import { Base } from "../src/jsqt";
 
+
 describe("tests for base component", () => {
-    test("Should raise and error because dom element doesn't exists.", () => {
+    test("Should raise an error because dom element doesn't exists.", () => {
         try {
             const base = new Base("base");
             expect(base.exists()).toBeFalsy();
