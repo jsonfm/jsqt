@@ -21,6 +21,14 @@ export class Range extends Base {
         this._value = value;
 	}
 
+    maximum(){
+        return this.max;
+    }
+
+    minimum(){
+        return this.min;
+    }
+
     /**
      * Updates the minimum value.
      * @param value 

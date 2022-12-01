@@ -43,6 +43,10 @@ export class Dial extends Range {
 		return value;
 	}
 
+	/**
+	 * Updates the value of the dial
+	 * @param value - the new value for dial
+	 */
 	setValue(value: number) {
 		if(value < this.min || value > this.max) {
 			throw new Error(`${value} is outside of the range between ${this.min} and ${this.max}`);
@@ -63,19 +67,26 @@ export class Dial extends Range {
 	}
 
 	/**
+	 * Returns the pressed state.
+	 */
+	pressed(){
+		return this._pressed;
+	}
+
+	/**
 	 * fit an angle on the range between 0 and 360degrees.
 	 * @returns 
 	 */
 	fixAngle(angle: number) {
 		let fixed = angle;
-		if(angle <= 0){
+		if(angle < 0){
 			fixed += 360
 		}
 		return fixed;
 	}
 
 	/**
-	 * Applies a rotation transform over the current dom element
+	 * Applies a rotation transform over the current dom element.
 	 * @param angle - angle in degrees.
 	 */
 	rotate(angle: number) {
@@ -96,8 +107,8 @@ export class Dial extends Range {
 	};
 
 	/**
-	 * Calculates the current dial angle
-	 * @param e - a mouse or a touch events
+	 * Calculates the current dial angle.
+	 * @param e - a mouse or a touch events.
 	 * @param fixed - fix angle ?
 	 */
 	calculateAngle = (e: DialEvent) => {
