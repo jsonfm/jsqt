@@ -12,7 +12,7 @@ export class Dial extends Range {
 		elementId: string,
 		min: number = 0,
 		max: number = 100,
-		value: number = 20
+		value: number = 0
 	) {
 		super(elementId, min, max, value);
 		this.rotate(0);
@@ -40,15 +40,18 @@ export class Dial extends Range {
 		const angle = this.angle(true); // angle between 0 and 360;
 		const step = 360 / (this.max - this.min);
 		const value = angle / step + this.min;
-		console.log("value: ", value);
 		return value;
 	}
 
 	setValue(value: number) {
-		if(value < this.min && value > this.max) {
-			throw new Error("value is outside of the range");
-		}
-
+		if(value < this.min || value > this.max) {
+			throw new Error(`${value} is outside of the range between ${this.min} and ${this.max}`);
+		};
+		const step = 360 / (this.max - this.min);
+		const angle = (value - this.min) * step;
+		this._angle = angle;
+		this._value = value;
+		this.rotate(angle);
 	}
 
 	/**
@@ -59,6 +62,10 @@ export class Dial extends Range {
 		this._pressed = pressed;
 	}
 
+	/**
+	 * fit an angle on the range between 0 and 360degrees.
+	 * @returns 
+	 */
 	fixAngle(angle: number) {
 		let fixed = angle;
 		if(angle <= 0){
@@ -82,7 +89,7 @@ export class Dial extends Range {
 	 * @param e - a mouse or a touch event
 	 */
 	onRotate = (e: DialEvent) => {
-		const angle = this.calculateAngle(e, false);
+		const angle = this.calculateAngle(e);
 		if (!!this._pressed) {
 			this.rotate(angle);
 		}
@@ -93,7 +100,7 @@ export class Dial extends Range {
 	 * @param e - a mouse or a touch events
 	 * @param fixed - fix angle ?
 	 */
-	calculateAngle = (e: DialEvent, fixed: boolean = true) => {
+	calculateAngle = (e: DialEvent) => {
 		const dial = this.element.getBoundingClientRect();
 
 		const center = {
@@ -126,10 +133,6 @@ export class Dial extends Range {
 			this.emit(new Event("change"));
 		}
 		
-		if (fixed && angle < 0 && angle >= -180) {
-			angle += 180;
-		}
-
 		return angle;
 	};
 }

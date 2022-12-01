@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.dial:after {
+.dial::after {
     content: "";
     width: 15px;
     height: 15px;

@@ -6,13 +6,13 @@ export class Range extends Base {
 
 	min: number = 0;
 	max: number = 100;
-    _value: number = 10;
+    _value: number = 0;
 
 	constructor(
         elementId: string,
         min: number = 0,
-        max: number = 0,
-        value: number = 30,
+        max: number = 100,
+        value: number = 0,
 
     ) {
 		super(elementId);

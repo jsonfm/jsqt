@@ -5,7 +5,7 @@ describe("Tests for Range component", () => {
         document.body.innerHTML = `
             <div class="button" id="range"></div>
         `
-        const range = new Range("Range");
+        const range = new Range("range");
         expect(range.exists()).toBeTruthy();
     });
 });
