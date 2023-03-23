@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/jsonfm/jsqt"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/jsqt.min.js",
   "module": "dist/jsqt.esm.js",

@@ -3,7 +3,7 @@ A library for wrap DOM elements with an API similar to Qt/PyQt.
 
 ### CDN
 ```
-<script src="https://cdn.jsdelivr.net/npm/jsqt@0.0.0/dist/jsqt.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqt@0.0.1/dist/jsqt.umd.js"></script>
 ```
 
 ### Button
