@@ -28,5 +28,8 @@ const dialChange = () => {
   $('valueLabel').innerHTML = `Value: ${dial.value().toFixed(2)}`
 }
 
+//events
 dial.on("change", dialChange);
+dial.on("pressed", () => console.log("Dial was pressed!"));
+dial.on("release ", () => console.log("Dial was released!"));
 setTimeout(() => {dial.setValue(110); dialChange()}, 3000);

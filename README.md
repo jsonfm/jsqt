@@ -37,13 +37,14 @@ const dialChange = () => {
   label.setText(text);
 }
 
+// Events
 dial.on("change", dialChange);
+dial.on("pressed", () => console.log("Dial was pressed!"));
+dial.on("release ", () => console.log("Dial was released!"));
 ```
 
 
-### API
-
-
+### Base
 ```js
 const element = new Base('some-element-id');
 
@@ -54,7 +55,6 @@ element.setEnabled(true);
 console.log("I'm enabled: ", element.isEnabled()); // true
 element.setEnabled(false);
 console.log("I'm enabled: ", element.isEnabled()); // true
-
 
 ```
 
